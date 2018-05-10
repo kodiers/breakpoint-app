@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  GroupsVC.swift
 //  breakpoint-app
 //
 //  Created by Viktor Yamchinov on 08/05/2018.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class GroupsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
