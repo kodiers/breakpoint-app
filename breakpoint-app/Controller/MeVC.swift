@@ -1,15 +1,19 @@
 //
-//  AuthVC.swift
+//  MeVC.swift
 //  breakpoint-app
 //
-//  Created by Viktor Yamchinov on 08/05/2018.
+//  Created by Viktor Yamchinov on 11/05/2018.
 //  Copyright © 2018 Viktor Yamchinov. All rights reserved.
 //
 
 import UIKit
 
-class AuthVC: UIViewController {
+class MeVC: UIViewController {
 
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var emailLbl: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,15 +35,8 @@ class AuthVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    @IBAction func signInByEmailBtnPressed(_ sender: Any) {
-        let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC")
-        present(loginVC!, animated: true, completion: nil)
+    
+    @IBAction func signOutBtnPressed(_ sender: Any) {
     }
     
-    @IBAction func signInByGoogleBtnPressed(_ sender: Any) {
-    }
-    
-    @IBAction func signInByFacebookBtnPressed(_ sender: Any) {
-    }
 }

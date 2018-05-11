@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC0F5EC520A5204300999B6E /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0F5EC420A5204300999B6E /* MeVC.swift */; };
 		AC335D5120A1135900982A6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC335D5020A1135900982A6D /* AppDelegate.swift */; };
 		AC335D5320A1135900982A6D /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC335D5220A1135900982A6D /* FeedVC.swift */; };
 		AC335D5520A1135900982A6D /* GroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC335D5420A1135900982A6D /* GroupsVC.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		3220D4937F40B503540FB9F5 /* Pods-breakpoint-app.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-breakpoint-app.release.xcconfig"; path = "Pods/Target Support Files/Pods-breakpoint-app/Pods-breakpoint-app.release.xcconfig"; sourceTree = "<group>"; };
 		3F4D0F648CCA4132E1C798CC /* Pods_breakpoint_app.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_breakpoint_app.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC0F5EC420A5204300999B6E /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		AC335D4D20A1135900982A6D /* breakpoint-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "breakpoint-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC335D5020A1135900982A6D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC335D5220A1135900982A6D /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				AC335D5420A1135900982A6D /* GroupsVC.swift */,
 				ACC3BC6620A212C40004FA7C /* AuthVC.swift */,
 				ACC3BC6820A212D20004FA7C /* LoginVC.swift */,
+				AC0F5EC420A5204300999B6E /* MeVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0F5EC520A5204300999B6E /* MeVC.swift in Sources */,
 				ACC3BC6720A212C40004FA7C /* AuthVC.swift in Sources */,
 				AC335D5520A1135900982A6D /* GroupsVC.swift in Sources */,
 				ACC3BC6920A212D20004FA7C /* LoginVC.swift in Sources */,
