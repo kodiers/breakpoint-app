@@ -1,27 +1,26 @@
 //
-//  AuthVC.swift
+//  CreateGroupsVC.swift
 //  breakpoint-app
 //
-//  Created by Viktor Yamchinov on 08/05/2018.
+//  Created by Viktor Yamchinov on 18/05/2018.
 //  Copyright © 2018 Viktor Yamchinov. All rights reserved.
 //
 
 import UIKit
-import Firebase
 
-class AuthVC: UIViewController {
+class CreateGroupsVC: UIViewController {
 
+    @IBOutlet weak var titleTextFld: InsetTextField!
+    @IBOutlet weak var descriptionTextFld: InsetTextField!
+    @IBOutlet weak var emailSearchTextFld: InsetTextField!
+    @IBOutlet weak var doneBtn: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var groupMemberLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if Auth.auth().currentUser != nil {
-            dismiss(animated: true, completion: nil)
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,14 +39,9 @@ class AuthVC: UIViewController {
     }
     */
 
-    @IBAction func signInByEmailBtnPressed(_ sender: Any) {
-        let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginVC")
-        present(loginVC!, animated: true, completion: nil)
+    @IBAction func doneBtnPressed(_ sender: Any) {
     }
     
-    @IBAction func signInByGoogleBtnPressed(_ sender: Any) {
-    }
-    
-    @IBAction func signInByFacebookBtnPressed(_ sender: Any) {
+    @IBAction func closeBtnPressed(_ sender: Any) {
     }
 }

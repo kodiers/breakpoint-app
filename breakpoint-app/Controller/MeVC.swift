@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class MeVC: UIViewController {
 
@@ -18,6 +19,11 @@ class MeVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        emailLbl.text = Auth.auth().currentUser?.email
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +43,18 @@ class MeVC: UIViewController {
     */
     
     @IBAction func signOutBtnPressed(_ sender: Any) {
+        let logoutPop = UIAlertController(title: "Logout?", message: "Are you sure want to logout?", preferredStyle: .actionSheet)
+        let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { (buttonTapped) in
+            do {
+                try Auth.auth().signOut()
+                let authVC = self.storyboard?.instantiateViewController(withIdentifier: "AuthVC") as? AuthVC
+                self.present(authVC!, animated: true, completion: nil)
+            } catch {
+                print(error)
+            }
+        }
+        logoutPop.addAction(logoutAction)
+        present(logoutPop, animated: true, completion: nil)
     }
     
 }
