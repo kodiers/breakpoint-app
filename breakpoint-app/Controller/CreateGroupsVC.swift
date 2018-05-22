@@ -17,10 +17,16 @@ class CreateGroupsVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var groupMemberLbl: UILabel!
     
+    var emailArray = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        tableView.delegate = self
+        tableView.dataSource = self
+        emailSearchTextFld.delegate = self
+        emailSearchTextFld.addTarget(self, action: #selector(textFieldDidChanged), for: .editingChanged)
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,5 +49,41 @@ class CreateGroupsVC: UIViewController {
     }
     
     @IBAction func closeBtnPressed(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
+    
+    @objc func textFieldDidChanged() {
+        if emailSearchTextFld.text == "" {
+            emailArray = []
+            tableView.reloadData()
+        } else {
+            DataService.instance.getEmail(forSearchQuery: emailSearchTextFld.text!) { (returnedEmailArray) in
+                self.emailArray = returnedEmailArray
+                self.tableView.reloadData()
+            }
+        }
+    }
+}
+
+extension CreateGroupsVC: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return emailArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell") as? UserCell else {
+            return UITableViewCell()
+        }
+        let profileImage = UIImage(named: "defaultProfileImage")
+        cell.configureCell(profileImage: profileImage!, email: emailArray[indexPath.row], isSelected: true)
+        return cell
+    }
+}
+
+extension CreateGroupsVC: UITextFieldDelegate {
+    
 }
