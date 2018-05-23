@@ -14,6 +14,8 @@ class UserCell: UITableViewCell {
     @IBOutlet weak var emailLbl: UILabel!
     @IBOutlet weak var checkImage: UIImageView!
     
+    var showing = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +25,15 @@ class UserCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+        if selected {
+            if showing {
+                checkImage.isHidden = false
+                showing = true
+            } else {
+                checkImage.isHidden = true
+                showing = false
+            }
+        }
     }
     
     func configureCell(profileImage image: UIImage, email: String, isSelected: Bool) {
