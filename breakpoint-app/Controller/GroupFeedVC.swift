@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class GroupFeedVC: UIViewController {
 
@@ -18,12 +19,15 @@ class GroupFeedVC: UIViewController {
     @IBOutlet weak var sendBtn: UIButton!
     
     var group: Group?
+    var groupMessages = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         sendBtnView.bindToKeyboard()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,7 +36,15 @@ class GroupFeedVC: UIViewController {
         DataService.instance.getEmailsFor(group: group!) { (returnedEmails) in
             self.membersLbl.text = returnedEmails.joined(separator: ", ")
         }
-        
+        DataService.instance.REF_GROUPS.observe(.value) { (snpshot) in
+            DataService.instance.getAllMessagesFor(desiredGroup: self.group!, handler: { (returnedGroupMessages) in
+                self.groupMessages = returnedGroupMessages
+                self.tableView.reloadData()
+                if self.groupMessages.count > 0 {
+                    self.tableView.scrollToRow(at: IndexPath(row: self.groupMessages.count - 1, section: 0), at: .none, animated: true)
+                }
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,9 +69,41 @@ class GroupFeedVC: UIViewController {
     }
 
     @IBAction func sendBtnPressed(_ sender: Any) {
+        if messageTextFld.text != "" {
+            messageTextFld.isEnabled = false
+            sendBtn.isEnabled = false
+            DataService.instance.uploadPost(withMessage: messageTextFld.text!, forUID: (Auth.auth().currentUser?.uid)!, withGroupKey: group?.key) { (complete) in
+                if complete {
+                    self.messageTextFld.isEnabled = true
+                    self.sendBtn.isEnabled = true
+                    self.messageTextFld.text = ""
+                }
+            }
+        }
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        dismissDetail()
+    }
+}
+
+extension GroupFeedVC: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return groupMessages.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupFeedCell", for: indexPath) as? GroupFeedCell else {
+            return UITableViewCell()
+        }
+        let message = groupMessages[indexPath.row]
+        DataService.instance.getUsername(forUID: message.senderId) { (email) in
+            cell.configureCell(profileImage: UIImage(named: "defaultProfileImage")!, email: email, content: message.content)
+        }
+        return cell
     }
 }

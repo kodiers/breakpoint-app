@@ -512,7 +512,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oFA-gU-2Hl">
-                                <rect key="frame" x="0.0" y="103" width="375" height="564"/>
+                                <rect key="frame" x="0.0" y="103" width="375" height="504"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.27058823529999998" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupFeedCell" rowHeight="100" id="aII-XV-Fgd" customClass="GroupFeedCell" customModule="breakpoint_app" customModuleProvider="target">
@@ -615,7 +615,7 @@
                             <constraint firstItem="4wl-7P-Uyw" firstAttribute="leading" secondItem="u19-6F-0Yr" secondAttribute="leading" id="7WK-T1-XB8"/>
                             <constraint firstItem="u19-6F-0Yr" firstAttribute="trailing" secondItem="aYh-rJ-8Tr" secondAttribute="trailing" constant="16" id="EGU-OZ-MeL"/>
                             <constraint firstItem="oFA-gU-2Hl" firstAttribute="leading" secondItem="u19-6F-0Yr" secondAttribute="leading" id="J25-O5-FEO"/>
-                            <constraint firstItem="u19-6F-0Yr" firstAttribute="bottom" secondItem="oFA-gU-2Hl" secondAttribute="bottom" id="Kzr-sQ-C5B"/>
+                            <constraint firstItem="4wl-7P-Uyw" firstAttribute="top" secondItem="oFA-gU-2Hl" secondAttribute="bottom" id="Jld-dl-6hx"/>
                             <constraint firstItem="aYh-rJ-8Tr" firstAttribute="leading" secondItem="u19-6F-0Yr" secondAttribute="leading" constant="16" id="Lp9-Fm-7bM"/>
                             <constraint firstItem="4wl-7P-Uyw" firstAttribute="trailing" secondItem="u19-6F-0Yr" secondAttribute="trailing" id="OS9-5I-ER2"/>
                             <constraint firstItem="aYh-rJ-8Tr" firstAttribute="top" secondItem="DUB-Zx-Ft0" secondAttribute="bottom" constant="8" id="S4x-f8-TAk"/>
